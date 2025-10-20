@@ -64,6 +64,8 @@ namespace YilanOyunu
         {
             int LocX = yilan[0].Location.X;
             int LocY = yilan[0].Location.Y;
+            elmaYediMi();
+
 
             if (yon == "right")
             {
@@ -132,6 +134,15 @@ namespace YilanOyunu
             gamePanel.Controls.Add(yemek);
 
 
+        }
+
+        void elmaYediMi()
+        {
+            if (yilan[0].Location == yemek.Location)
+            {
+                gamePanel.Controls.Remove(yemek);
+                elmaOlustur();
+            }
         }
     }
 }
