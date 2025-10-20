@@ -138,9 +138,12 @@ namespace YilanOyunu
 
         void elmaYediMi()
         {
+            int puan = int.Parse(txtScore.Text);
             if (yilan[0].Location == yemek.Location)
             {
                 gamePanel.Controls.Remove(yemek);
+                puan += 10;
+                txtScore.Text = puan.ToString();
                 elmaOlustur();
             }
         }
