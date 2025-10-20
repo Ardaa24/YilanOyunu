@@ -18,11 +18,11 @@ namespace YilanOyunu
             InitializeComponent();
             this.KeyPreview = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            
-            move = new moveDAL(this);     
-            move.EnableControlDrag(this); 
-            move.EnableControlDrag(topPanel); 
-           //move.EnableControlDrag(gamePanel);
+
+            move = new moveDAL(this);
+            move.EnableControlDrag(this);
+            move.EnableControlDrag(topPanel);
+            //move.EnableControlDrag(gamePanel);
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace YilanOyunu
         List<Panel> yilan = new List<Panel>();
 
         string yon = "right";
-        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -43,15 +43,16 @@ namespace YilanOyunu
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-           txtScore.Text = "0";
+            txtScore.Text = "0";
             parca = new Panel();
-            parca.Location =  new Point(100, 100);
+            parca.Location = new Point(100, 100);
             parca.Size = new Size(20, 20);
-            parca.BackColor = Color.Green;  
+            parca.BackColor = Color.Green;
             yilan.Add(parca);
             gamePanel.Controls.Add(yilan[0]);
             timer1.Start();
             gamePanel.Focus();
+            elmaOlustur();
         }
 
         private void txtScore_Click(object sender, EventArgs e)
@@ -66,15 +67,15 @@ namespace YilanOyunu
 
             if (yon == "right")
             {
-                if (LocX < Width - 20) 
+                if (LocX < Width - 20)
                     LocX += 20;
                 else
-                    LocX = 0; 
+                    LocX = 0;
             }
 
             if (yon == "left")
             {
-                if (LocX >= 20) 
+                if (LocX >= 20)
                     LocX -= 20;
                 else
                     LocX = Width - 20;
@@ -82,16 +83,16 @@ namespace YilanOyunu
 
             if (yon == "down")
             {
-                if (LocY < Height - 20) 
+                if (LocY < Height - 20)
                     LocY += 20;
                 else
-                    LocY = 0; 
+                    LocY = 0;
             }
 
             if (yon == "up")
             {
-                if (LocY > 0) 
-                    LocY -= 20; 
+                if (LocY > 0)
+                    LocY -= 20;
                 else
                     LocY = Height - 20;
             }
@@ -117,8 +118,20 @@ namespace YilanOyunu
             {
                 yon = "down";
             }
+
+
         }
+        void elmaOlustur()
+        {
+            Random rnd = new Random();
+            int x = rnd.Next(0, gamePanel.Width / 20) * 20;
+            int y = rnd.Next(0, gamePanel.Height / 20) * 20;
+            yemek.Size = new Size(20, 20);
+            yemek.BackColor = Color.Red;
+            yemek.Location = new Point(x, y);
+            gamePanel.Controls.Add(yemek);
 
 
+        }
     }
 }
