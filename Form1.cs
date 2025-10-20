@@ -16,9 +16,9 @@ namespace YilanOyunu
         public Form1()
         {
             InitializeComponent();
-            //this.KeyPreview = true;
-            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            gamePanel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gamePanel_KeyDown);
+            this.KeyPreview = true;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            
             move = new moveDAL(this);     
             move.EnableControlDrag(this); 
             move.EnableControlDrag(topPanel); 
@@ -66,7 +66,7 @@ namespace YilanOyunu
 
             if (yon == "right")
             {
-                if (LocX < gamePanel.Width - 20) 
+                if (LocX < Width - 20) 
                     LocX += 20;
                 else
                     LocX = 0; 
@@ -77,12 +77,12 @@ namespace YilanOyunu
                 if (LocX >= 20) 
                     LocX -= 20;
                 else
-                    LocX = gamePanel.Width - 20;
+                    LocX = Width - 20;
             }
 
             if (yon == "down")
             {
-                if (LocY < gamePanel.Height - 20) 
+                if (LocY < Height - 20) 
                     LocY += 20;
                 else
                     LocY = 0; 
@@ -93,7 +93,7 @@ namespace YilanOyunu
                 if (LocY > 0) 
                     LocY -= 20; 
                 else
-                    LocY =.Height - 20;
+                    LocY = Height - 20;
             }
 
             yilan[0].Location = new Point(LocX, LocY);
@@ -101,7 +101,24 @@ namespace YilanOyunu
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Right && yon != "left")
+            {
+                yon = "right";
+            }
+            else if (e.KeyCode == Keys.Left && yon != "right")
+            {
+                yon = "left";
+            }
+            else if (e.KeyCode == Keys.Up && yon != "down")
+            {
+                yon = "up";
+            }
+            else if (e.KeyCode == Keys.Down && yon != "up")
+            {
+                yon = "down";
+            }
         }
+
+
     }
 }
