@@ -64,7 +64,9 @@ namespace YilanOyunu
         {
             int LocX = yilan[0].Location.X;
             int LocY = yilan[0].Location.Y;
+            //Sorgu ve Hareket
             elmaYediMi();
+            hareket();
 
 
             if (yon == "right")
@@ -145,6 +147,26 @@ namespace YilanOyunu
                 puan += 10;
                 txtScore.Text = puan.ToString();
                 elmaOlustur();
+                yilanUzat();
+            }
+        }
+
+        void yilanUzat()
+        {
+            Panel ekParca = new  Panel();
+            ekParca.Size = new Size(20, 20);
+            ekParca.BackColor = Color.Gray;
+            yilan.Add(ekParca);
+            gamePanel.Controls.Add(ekParca);
+
+
+        }
+
+        void hareket ()
+        {
+            for (int i = yilan.Count - 1; i > 0; i--)
+            {
+                yilan[i].Location = yilan[i - 1].Location;
             }
         }
     }
