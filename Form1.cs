@@ -12,20 +12,20 @@ namespace YilanOyunu
 {
     public partial class Form1 : Form
     {
-        private moveDAL move;
+        private moveBLL move;
         public Form1()
         {
             InitializeComponent();
             this.KeyPreview = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 
-            move = new moveDAL(this);
+            move = new moveBLL(this);
             move.EnableControlDrag(this);
             move.EnableControlDrag(topPanel);
             //move.EnableControlDrag(gamePanel);
 
         }
-  
+
 
         Panel parca;
         Panel yemek = new Panel();
@@ -185,7 +185,7 @@ namespace YilanOyunu
 
         void yilanUzat()
         {
-            Panel ekParca = new  Panel();
+            Panel ekParca = new Panel();
             ekParca.Size = new Size(20, 20);
             ekParca.BackColor = Color.Gray;
             yilan.Add(ekParca);
@@ -193,8 +193,8 @@ namespace YilanOyunu
 
 
         }
-      
-        void hareket ()
+
+        void hareket()
         {
             for (int i = yilan.Count - 1; i > 0; i--)
             {
