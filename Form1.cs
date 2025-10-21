@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static YilanOyunu.devBLL;
 
 namespace YilanOyunu
 {
@@ -214,6 +215,11 @@ namespace YilanOyunu
                 yilan[i].Location = yilan[i - 1].Location;
             }
         }
+        private void btnDev_Click(object sender, EventArgs e)
+        {
+            DeveloperInfo info = new DeveloperInfo();
+            info.ShowPopup();
+        }
 
         private void btnLastScore_Click(object sender, EventArgs e)
         {
@@ -243,5 +249,4 @@ namespace YilanOyunu
             }
         }
     }
-
 }
