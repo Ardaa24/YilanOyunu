@@ -25,10 +25,7 @@ namespace YilanOyunu
             //move.EnableControlDrag(gamePanel);
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+  
 
         Panel parca;
         Panel yemek = new Panel();
@@ -43,7 +40,7 @@ namespace YilanOyunu
 
 
 
-        private void btnStart_Click(object sender, EventArgs e)
+        public void btnStart_Click(object sender, EventArgs e)
         {
             txtScore.Text = "0";
             PaneliTemizle();
@@ -73,6 +70,15 @@ namespace YilanOyunu
             }
         }
 
+        void kazanma()
+        {
+            if (int.Parse(txtScore.Text) >= 500)
+            {
+                txtMessage.Visible = true;
+                txtMessage.Text = "Oyunu Kazandınız! Skorunuz: " + txtScore.Text;
+                timer1.Stop();
+            }
+        }
         void PaneliTemizle()
         {
             for (int i = 0; i < yilan.Count; i++)
@@ -92,6 +98,7 @@ namespace YilanOyunu
             elmaYediMi();
             hareket();
             carpismaVarMi();
+            kazanma();
 
 
             if (yon == "right")
@@ -187,8 +194,6 @@ namespace YilanOyunu
 
         }
       
-
-       
         void hareket ()
         {
             for (int i = yilan.Count - 1; i > 0; i--)
@@ -196,5 +201,8 @@ namespace YilanOyunu
                 yilan[i].Location = yilan[i - 1].Location;
             }
         }
+
+
     }
+
 }
