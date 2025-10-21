@@ -41,9 +41,12 @@ namespace YilanOyunu
             Application.Exit();
         }
 
+
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             txtScore.Text = "0";
+            PaneliTemizle();
             parca = new Panel();
             parca.Location = new Point(100, 100);
             parca.Size = new Size(20, 20);
@@ -55,9 +58,30 @@ namespace YilanOyunu
             elmaOlustur();
         }
 
-        private void txtScore_Click(object sender, EventArgs e)
-        {
 
+        void carpismaVarMi()
+        {
+            for (int i = 2; i < yilan.Count; i++)
+            {
+                if (yilan[0].Location == yilan[i].Location)
+                {
+                    txtMessage.Visible = true;
+                    txtMessage.Text = "Oyun Bitti! Skorunuz: " + txtScore.Text;
+                    timer1.Stop();
+
+                }
+            }
+        }
+
+        void PaneliTemizle()
+        {
+            for (int i = 0; i < yilan.Count; i++)
+            {
+                gamePanel.Controls.Remove(yilan[i]);
+            }
+            yilan.Clear();
+            gamePanel.Controls.Remove(yemek);
+            txtMessage.Visible = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -67,6 +91,7 @@ namespace YilanOyunu
             //Sorgu ve Hareket
             elmaYediMi();
             hareket();
+            carpismaVarMi();
 
 
             if (yon == "right")
@@ -161,7 +186,9 @@ namespace YilanOyunu
 
 
         }
+      
 
+       
         void hareket ()
         {
             for (int i = yilan.Count - 1; i > 0; i--)
