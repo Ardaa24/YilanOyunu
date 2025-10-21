@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace YilanOyunu
 {
-    internal class moveDAL
+    internal class moveBLL
     {
         private bool move;
         private int mouseX;
         private int mouseY;
         private Form targetForm;
 
-        public moveDAL(Form form)
+        public moveBLL(Form form)
         {
             targetForm = form;
         }
