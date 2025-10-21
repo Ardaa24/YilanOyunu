@@ -26,11 +26,11 @@ namespace YilanOyunu
 
         }
 
-
+        //Oyun Değişkenleri
         Panel parca;
         Panel yemek = new Panel();
         List<Panel> yilan = new List<Panel>();
-
+        //Yön Değişkeni
         string yon = "right";
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -38,7 +38,10 @@ namespace YilanOyunu
             Application.Exit();
         }
 
-
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Yılan Oyunu\n\nYön tuşları ile yılanı kontrol edebilirsiniz.\nKırmızı elmayı yedikçe yılanınız uzar.\nSkorunuz 500'e ulaştığında oyunu kazanırsınız.\nKendi kendinize çarparsanız oyununuz sona erer.\n\nİyi eğlenceler!", "Oyun Bilgisi", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
 
         public void btnStart_Click(object sender, EventArgs e)
         {
@@ -201,7 +204,6 @@ namespace YilanOyunu
                 yilan[i].Location = yilan[i - 1].Location;
             }
         }
-
 
     }
 
