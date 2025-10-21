@@ -69,6 +69,16 @@ namespace YilanOyunu
                     txtMessage.Text = "Oyun Bitti! Skorunuz: " + txtScore.Text;
                     timer1.Stop();
 
+                    try
+                    {
+                        System.IO.File.AppendAllText("score.txt", txtScore.Text + Environment.NewLine);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Skor kaydedilirken hata oluştu: " + ex.Message);
+                    }
+
+                    break;
                 }
             }
         }
@@ -205,6 +215,33 @@ namespace YilanOyunu
             }
         }
 
+        private void btnLastScore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (System.IO.File.Exists("score.txt"))
+                {
+                    string[] skorlar = System.IO.File.ReadAllLines("score.txt");
+                    if (skorlar.Length > 0)
+                    {
+                        string sonSkor = skorlar[skorlar.Length - 1];
+                        MessageBox.Show("Son Skor: " + sonSkor, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Henüz kayıtlı skor bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Henüz hiç oyun oynanmadı, skor dosyası yok.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Son skor okunurken hata oluştu: " + ex.Message);
+            }
+        }
     }
 
 }
