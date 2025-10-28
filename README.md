@@ -10,12 +10,7 @@
 
 - [Proje Hakkında](#proje-hakkında)  
 - [Özellikler](#özellikler)  
-- [Kurulum & Çalıştırma](#kurulum--çalıştırma)  
-- [Kullanım](#kullanım)  
-- [Kod Yapısı](#kod-yapısı)  
-- [Geliştirme Fikirleri](#geliştirme-fikirleri)  
-- [Katkıda Bulunma](#katkıda-bulunma)  
-- [Lisans](#lisans)  
+
 
 ---
 
