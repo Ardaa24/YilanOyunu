@@ -32,3 +32,9 @@ Projede temel oyun mantığı, yılanın yön kontrolü, yem yerleştirme, çarp
 
 ---
 
+
+
+https://github.com/user-attachments/assets/75adfd83-7160-4158-a18e-483b3252f807
+
+
+
